@@ -32,9 +32,9 @@ canonifyURLs = true
 [params.giscus]
   enable = true
   repo = "Tricta/blog"
-  repoId = "R_kgDOSRN3ug"
+  repoId = "R_kgDOSRTTRg"
   category = "General"
-  categoryId = "DIC_kwDOSRN3us4C8FE6"
+  categoryId = "DIC_kwDOSRTTRs4C8Fqn"
   mapping = "pathname"
   reactionsEnabled = "1"
   emitMetadata = "1"
