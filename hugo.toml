@@ -1,0 +1,99 @@
+baseURL = "https://tricta.icu/"
+languageCode = "en-us"
+title = "Tricta's Blog"
+enableEmoji = false
+enableRobotsTXT = true
+summaryLength = 30
+canonifyURLs = true
+
+[params]
+  description = "notes & writing"
+  author = "トリクタ"
+  handle = "_tricta"
+  bio = "My notes before I lose them in downloads folder"
+  avatar = "/profile.png"
+
+[[params.social]]
+  label = "github"
+  icon = "gh"
+  url = "https://github.com/Tricta"
+
+[[params.social]]
+  label = "email"
+  icon = "@"
+  url = "mailto:joaopparisi@gmail.com"
+
+[[params.social]]
+  label = "twitter/x"
+  icon = "tw"
+  url = "https://x.com/_tricta?s=21"
+
+# Comments via Giscus (https://giscus.app). Enable Discussions on repo, then fill ids.
+[params.giscus]
+  enable = true
+  repo = "Tricta/blog"
+  repoId = "R_kgDOSRN3ug"
+  category = "General"
+  categoryId = "DIC_kwDOSRN3us4C8FE6"
+  mapping = "pathname"
+  reactionsEnabled = "1"
+  emitMetadata = "1"
+  inputPosition = "top"
+  theme = "dark"
+  lang = "en"
+
+# Per-post view counter via Abacus (https://abacus.jasoncameron.dev). No signup, less ad-blocked.
+[params.abacus]
+  enable = true
+  namespace = "tricta-blog"
+
+# Site-wide analytics via GoatCounter (https://goatcounter.com). Optional dashboard.
+[params.goatcounter]
+  enable = true
+  code = "tricta"
+
+# Likes are sourced from Giscus ❤️ reactions (per-user via GitHub login).
+# Set [params.giscus].enable = true and fill ids to enable likes + comments.
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+  [markup.highlight]
+    style = "monokai"
+    noClasses = true
+    lineNos = false
+    tabWidth = 2
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "home"
+    url = "/home/"
+    weight = -1
+  [[menu.main]]
+    name = "posts"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "repos"
+    url = "/repos/"
+    weight = 2
+  [[menu.main]]
+    name = "friends"
+    url = "/friends/"
+    weight = 3
+  [[menu.main]]
+    name = "about"
+    url = "/about/"
+    weight = 4
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[taxonomies]
+  tag = "tags"

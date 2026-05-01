@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="home-mobile">
+  {{ partial "sidebar.html" . }}
+</div>
+
+<div class="home-desktop">
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  <header class="post-header">
+    <h1>Posts</h1>
+    <div class="post-header-meta">
+      <span>{{ len $posts }} {{ if eq (len $posts) 1 }}entry{{ else }}entries{{ end }}</span>
+    </div>
+  </header>
+
+  {{ range ($posts.GroupByDate "2006") }}
+  <div class="post-year">{{ .Key }}</div>
+  <div class="post-list">
+    {{ range .Pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+{{ partial "head.html" . }}
+<body{{ with .Layout }} class="layout-{{ . }}"{{ end }}>
+  {{ partial "header.html" . }}
+  <div class="layout">
+    {{ if ne .Layout "profile" }}{{ partial "sidebar.html" . }}{{ end }}
+    <main class="main">
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+  {{ partial "footer.html" . }}
+  <script src="{{ "/js/nav.js" | relURL }}" defer></script>
+</body>
+</html>

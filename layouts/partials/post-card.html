@@ -1,0 +1,21 @@
+{{ $thumb := .Params.thumbnail | default .Params.image | default site.Params.defaultThumbnail | default "/profile.png" }}
+<a href="{{ .RelPermalink }}" class="post-card{{ if $thumb }} has-thumb{{ end }}">
+  {{ with $thumb }}
+  <div class="post-card-thumb"><img src="{{ . | relURL }}" alt="" loading="lazy"></div>
+  {{ end }}
+  <div class="post-card-body">
+    <div class="post-card-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <span class="dot">·</span>
+      <span class="reading-time">{{ .ReadingTime }} min</span>
+      {{ with .Params.tags }}
+      <span class="dot">·</span>
+      <ul class="post-card-tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+      {{ end }}
+    </div>
+    <h3 class="post-card-title">{{ .Title }}</h3>
+    {{ $summary := .Params.summary }}
+    {{ if not $summary }}{{ $summary = .Summary | plainify | truncate 180 }}{{ end }}
+    {{ with $summary }}<p class="post-card-summary">{{ . }}</p>{{ end }}
+  </div>
+</a>

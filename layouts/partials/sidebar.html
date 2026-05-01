@@ -1,0 +1,44 @@
+<aside class="sidebar">
+  <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Params.author }}" class="avatar" width="120" height="120">
+  <p class="profile-name">{{ .Site.Params.author }}</p>
+  {{ with .Site.Params.handle }}<span class="profile-handle">@{{ . }}</span>{{ end }}
+  {{ with .Site.Params.bio }}<p class="profile-bio">{{ . }}</p>{{ end }}
+
+  {{ with index site.Taxonomies "tags" }}
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">tags</div>
+    <ul class="sidebar-tags">
+      {{ range $name, $taxonomy := . }}
+      <li><a href="{{ "/tags/" | relURL }}{{ $name | urlize }}/">{{ $name }}<span class="tag-count">{{ len $taxonomy }}</span></a></li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  {{ with .Site.Params.social }}
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">elsewhere</div>
+    <ul class="social-list">
+      {{ range . }}
+      <li><a href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}><span class="social-icon">[{{ .icon }}]</span><span>{{ .label }}</span></a></li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ $tagCount := 0 }}{{ with index site.Taxonomies "tags" }}{{ $tagCount = len . }}{{ end }}
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">stats</div>
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-value">{{ len $posts }}</span>
+        <span class="stat-label">posts</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">{{ $tagCount }}</span>
+        <span class="stat-label">tags</span>
+      </div>
+    </div>
+  </div>
+</aside>

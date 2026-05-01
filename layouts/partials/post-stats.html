@@ -1,0 +1,20 @@
+{{ $abacus := .Site.Params.abacus }}
+{{ $giscus := .Site.Params.giscus }}
+{{ $hasAbacus := and $abacus $abacus.enable $abacus.namespace }}
+{{ $hasGiscus := and $giscus $giscus.enable $giscus.repoId $giscus.categoryId }}
+{{ $slug := .File.ContentBaseName | default .Slug | default (.RelPermalink | strings.Trim "/" | replaceRE "/" "-") }}
+{{ if or $hasAbacus $hasGiscus }}
+<div class="post-views" data-slug="{{ $slug }}"
+     {{ if $hasAbacus }}data-abacus-ns="{{ $abacus.namespace }}"{{ end }}
+     {{ if $hasGiscus }}data-giscus="1"{{ end }}>
+  {{ if $hasAbacus }}
+  <span class="post-views-item">
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+      <path fill="currentColor" d="M8 2C4 2 1 5.5 1 8s3 6 7 6 7-3.5 7-6-3-6-7-6Zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+    </svg>
+    <span class="js-views">—</span>
+    <span>views</span>
+  </span>
+  {{ end }}
+</div>
+{{ end }}

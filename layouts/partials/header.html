@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="{{ "/" | relURL }}" class="site-title">{{ .Site.Title }}<span class="cursor">_</span></a>
+    <button class="nav-toggle" aria-label="toggle menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav">
+      {{ range .Site.Menus.main }}
+      {{ $cls := slice }}
+      {{ if $.IsMenuCurrent "main" . }}{{ $cls = $cls | append "active" }}{{ end }}
+      {{ if eq .Identifier "home" }}{{ $cls = $cls | append "mobile-only" }}{{ end }}
+      <a href="{{ .URL | relURL }}"{{ with $cls }} class="{{ delimit . " " }}"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+  <div class="nav-backdrop" aria-hidden="true"></div>
+</header>

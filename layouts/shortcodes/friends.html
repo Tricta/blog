@@ -1,0 +1,20 @@
+<ul class="friend-list">
+  {{ range site.Data.friends }}
+  {{ $name := .name }}
+  <li class="friend-card">
+    <a href="{{ .url }}"{{ if hasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>
+      {{ with .avatar }}
+      <figure class="friend-avatar"><img src="{{ . | relURL }}" alt="{{ $name }}" loading="lazy"></figure>
+      {{ end }}
+      <div class="friend-meta">
+        <span class="friend-name">{{ $name }}</span>
+        {{ with .tags }}
+        <ul class="friend-tags">
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </div>
+    </a>
+  </li>
+  {{ end }}
+</ul>

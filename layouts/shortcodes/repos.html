@@ -1,0 +1,48 @@
+{{ $colors := dict
+  "Rust" "#dea584"
+  "Go" "#00ADD8"
+  "Python" "#3572A5"
+  "TypeScript" "#2b7489"
+  "JavaScript" "#f1e05a"
+  "C" "#555555"
+  "C++" "#f34b7d"
+  "C#" "#178600"
+  "Zig" "#ec915c"
+  "Markdown" "#083fa1"
+  "Shell" "#89e051"
+  "Bash" "#89e051"
+  "Elixir" "#6e4a7e"
+  "Haskell" "#5e5086"
+  "Lua" "#000080"
+  "Ruby" "#701516"
+  "Java" "#b07219"
+  "Swift" "#ffac45"
+  "Kotlin" "#A97BFF"
+  "HTML" "#e34c26"
+  "CSS" "#563d7c"
+}}
+<div class="repo-list">
+  {{ range site.Data.repos }}
+  {{ $url := .url }}
+  {{ if not $url }}{{ $url = printf "https://github.com/%s/%s" .owner .name }}{{ end }}
+  <a class="repo-card" href="{{ $url }}" target="_blank" rel="noopener">
+    <div class="repo-card-header">
+      <span class="repo-name">{{ .owner }}/<strong>{{ .name }}</strong></span>
+      {{ with .language }}
+      {{ $langs := . }}
+      {{ if not (reflect.IsSlice $langs) }}{{ $langs = slice $langs }}{{ end }}
+      <div class="repo-langs">
+        {{ range $langs }}
+        {{ $color := index $colors . | default "#6c6960" }}
+        <span class="repo-lang"><span class="lang-dot" style="background: {{ $color }}"></span>{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ with .description }}<p class="repo-desc">{{ . }}</p>{{ end }}
+    {{ with .tags }}
+    <ul class="repo-tags">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+    {{ end }}
+  </a>
+  {{ end }}
+</div>

@@ -1,0 +1,17 @@
+# add or remove entries here. each one renders as a friend card on /friends/.
+# fields: name, url, avatar (path or URL), tags (list).
+
+- name: "Hakai Offensive Security"
+  url: "https://hakaisecurity.io/hakai-blog/"
+  avatar: "/friends/hakai.webp"
+  tags: ["offensive", "research"]
+
+- name: "b1scoito"
+  url: "https://biscoito.eu"
+  avatar: "/friends/b1scoito.jpeg"
+  tags: ["lifestyle"]
+
+- name: "katashi"
+  url: "https://katashi.wtf"
+  avatar: "/friends/katashi.png"
+  tags: ["lifestyle"]

@@ -1,0 +1,41 @@
+# add or remove entries here. each one renders as a card on /repos/.
+# `url` is optional — if omitted, it's built from {owner}/{name}.
+# `language` maps to a coloured dot; common languages are pre-coloured
+# (rust, go, python, typescript, javascript, c, c++, zig, markdown, etc).
+# for multiple languages, use a yaml list: language: ["C", "Kotlin"]
+
+- owner: "Tricta"
+  name: "Liho"
+  description: "Liho is a tool ported from my other project Yaga, that use hooks of android system components like libart.so and libdl.so, to enable instrumentation of both DEX and native code of applications on Android via zygote injection."
+  language: "C++"
+  tags: ["Android", "ART", "Zygote", "DEX Code", "Native Code"]
+
+- owner: "hakaioffsec"
+  name: "beerus-android"
+  description: "Beerus Framework is a project developed by the Hakai Offensive Security Research Team to assist you throughout the mobile penetration testing process. It provides powerful utilities, from sandbox exfiltration PoCs to fully managing and instrumenting applications directly on your device, without needing a computer."
+  language: ["C", "Kotlin"]
+  tags: []
+
+- owner: "Tricta"
+  name: "ZygiskReconModules"
+  description: "This repository is a collection of Zygisk modules for Android security research. Use these modules to dump runtime components, such as .so loadeds, trace DEX function calls, dump loaded bytecodes or dump memory"
+  language: ["C"]
+  tags: []
+
+- owner: "Tricta"
+  name: "NotInfecktya"
+  description: "Project to show how a Windows Mini-Filter driver can be used for ransomware protection."
+  language: ["C", "C#"]
+  tags: []
+
+- owner: "Tricta"
+  name: "YureiStriker"
+  description: "Android Malware example using ART hooking technique."
+  language: "Smali"
+  tags: []
+
+- owner: "Tricta"
+  name: "Helldroid"
+  description: "RASP(Runtime Application Self-Protection) project that integrate seamlessly with any Java-based application."
+  language: "C++"
+  tags: []

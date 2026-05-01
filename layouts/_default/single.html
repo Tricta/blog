@@ -1,0 +1,41 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    {{ if eq .Section "posts" }}
+    <div class="post-header-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      <span class="dot">·</span>
+      <span class="reading-time">{{ .ReadingTime }} min read</span>
+      <span class="dot">·</span>
+      <span>{{ .WordCount }} words</span>
+    </div>
+    {{ end }}
+    <h1>{{ .Title | title }}</h1>
+    {{ with .Params.tags }}
+    <ul class="tags">
+      {{ range . }}<li><a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a></li>{{ end }}
+    </ul>
+    {{ end }}
+    {{ if eq .Section "posts" }}
+    {{ $thumb := .Params.thumbnail | default .Params.image | default site.Params.defaultThumbnail | default "/profile.png" }}
+    {{ with $thumb }}
+    <figure class="post-thumb"><img src="{{ . | relURL }}" alt="{{ $.Title }}"></figure>
+    {{ end }}
+    {{ end }}
+  </header>
+
+  {{ if and (eq .Section "posts") (gt .WordCount 300) (.Params.toc | default true) }}
+  <nav class="toc">{{ .TableOfContents }}</nav>
+  {{ end }}
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  {{ if eq .Section "posts" }}
+    {{ partial "post-stats.html" . }}
+    {{ partial "comments.html" . }}
+    <script src="{{ "/js/post-stats.js" | relURL }}" defer></script>
+  {{ end }}
+</article>
+{{ end }}
